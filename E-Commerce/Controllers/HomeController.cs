@@ -18,20 +18,7 @@ namespace E_Commerce.Controllers
         static HttpClient client = new HttpClient();
         public async Task<ActionResult> Index()
         {
-            var facebookModel = new FacebookModel();
-            try
-            {
-                var endpoint = "http://localhost:38752/api/facebook/getallfacebook";
-                var result = client.GetAsync(endpoint).Result;
-                var json = result.Content.ReadAsStringAsync().Result;
-                string output = JsonConvert.SerializeObject(json);
-                facebookModel = JsonConvert.DeserializeObject<FacebookModel>(output);
-            }
-            catch (Exception ex)
-            {
-                ex.ToString();
-            }
-            return View(facebookModel);
+            return View();
         }
 
         public ActionResult About()
